@@ -1,55 +1,28 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
-int n,t,i;
-printf("Enter size of array:");
-scanf("%d",&n);
-printf("Enter target:");
-scanf("%d",&t);
-int A[n],S[n],R[n],NSR[n];
-printf("Enter the candidates : ");
-for(int i=0;i<n;i++)
-{
-scanf("%d",&A[i]);
-}
-int val=0,s=0,r=0,nsr=0;
-for(i=0;i<n;i++)
-{
-if(val+A[i]<=t)
-{
-val=val+A[i];
-S[s]=A[i];
-s++;
-if(val==t)
-break;
-}
-else
-{
-R[r]=A[i];
-r++;
-}
-}
-for(int j=i+1;j<n;j++)
-{
-NSR[nsr]=A[j];
-nsr++;
-}
-printf("Selected Candidates : ");
-for(int i=0;i<s;i++)
-{
-printf("%d ",S[i]);
-}
-printf("\n");
-printf("Rejected Candidates : ");
-for(int i=0;i<r;i++)
-{
-printf("%d ",R[i]);
-}
-printf("\n");
-printf("Neither Selected Nor Rejected Candidates : ");
-for(int i=0;i<nsr;i++)
-{
-printf("%d ",NSR[i]);
-}
+    int cost, count = 0, i;
+    int inr_count;
+    printf("Enter the array size : ");
+    scanf("%d",&inr_count);
+    int inr[inr_count];
+    for(i=0;i<inr_count;i++){
+        scanf("%d",&inr[i]);
+    }
+   
+
+    printf("Enter the amount: ");
+    scanf("%d", &cost);
+
+    for (i = 0; i < inr_count; i++, count = 0) {
+        while (inr[i] <= cost) {
+            cost = cost - inr[i];
+            count++;
+        }
+        printf("INR:\t%d\t\tNos:\t%d\n", inr[i], count);
+    }
+
+    return 0;
 }
